@@ -1,0 +1,32 @@
+<div id="page-content">
+    <div class="p-3 mb-2 bg-lighg-rey text-white">
+    <%#This was used to set the page background %> 
+
+    <h1 class="text-center mt-4">ARTICLES LISTING PAGE</h1>
+    <div class="container ">
+    <% @articles.each do |article| %>
+        <div class="row justify-content-center">
+            <div class="col-8 mt-4">
+                <div class="card text-center shadow-sm mb-5 bg-white rounded">
+                <div class="card-header font-italic">
+                    Created by: zack
+                </div>
+                <div class="card-body ">
+                    <h5 class="card-title">Title: <%= link_to 'Article Title', article_path(article), class:"text-success" %></h5>
+                    <p class="card-text"><%= truncate(article.description, length:100) %></p>
+                    <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
+                    <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
+                    <%= link_to('Delete', article, class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}) %>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    <small>Created <%=time_ago_in_words (article.created_at) %> ago | Edited <%= time_ago_in_words (article.updated_at) %> ago </small>
+                </div>
+                </div>
+                </div>
+            </div>
+    <% end %>
+    <p>
+    <%= link_to 'Add New Article', new_article_path, class:"btn btn-info" %>
+    </p>
+    </div>
+</div>
