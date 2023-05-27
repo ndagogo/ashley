@@ -1,4 +1,4 @@
-<div class="p-3 mb-2 bg-secondary text-white">
+<div id="page-content">
 <%#This was used to set the page background %> 
 <h2 class="text-center mt-4"><%= @article.title%></h2>
     <div class="container ">
@@ -11,7 +11,7 @@
             <div class="card-body ">
                 <div class="card-text text-start"><%= simple_format (@article.description) %></div>
                 <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info" %>
-                <%= link_to('Delete', article_path(@article), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}) %>
+                <%= link_to ('Delete', article_path (@article), class:"btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}) %>
             </div>
             <div class="card-footer text-body-secondary">
                 <small>Created <%=time_ago_in_words (@article.created_at) %> ago | Edited <%= time_ago_in_words (@article.updated_at) %> ago </small>
@@ -20,7 +20,5 @@
             </div>
         </div>
     </div>
-<p>
-<%= link_to 'Add New Article', new_article_path, class:"btn btn-info" %>
-</p>
+</div>
 </div>
