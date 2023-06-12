@@ -24,16 +24,6 @@ Things you may want to cover:
 * ...
 
 
-<div class="bg-light p-5 rounded-lg m-3 text-center jumbotron text-light">
-    <h1 class="display-4">Alpha Blog</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-success btn-lg" href="#" role="button">Sign Up</a>
-</div>
-
-<p>
-<%= link_to 'Article Listing', articles_path %>|
-<%= link_to 'About Page', about_path %>
-</p>
+<h4 class="text-left mt-4">Joined Alpha Blog On: <%= @user.created_at.to_formatted_s(:long) %></h4>
+    <h4 class="text-left mt-4">Updated Profile On: <%= @user.updated_at.to_formatted_s(:long) %></h4>
 

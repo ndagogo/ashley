@@ -1,17 +1,20 @@
 <div id="page-content">
 <%#This was used to set the page background %> 
-<h2 class="text-center mt-4"><%= @article.title%></h2>
+<h2 class="text-center mt-4"><%= @article.title %></h2>
     <div class="container ">
     <div class="row justify-content-center">
         <div class="col-8 mt-4">
             <div class="card text-center shadow-sm mb-5 bg-white rounded">
             <div class="card-header font-italic">
-                Created by: zack
+            by <%= @article.user.username if @article.user %>
+            <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
             </div>
             <div class="card-body ">
                 <div class="card-text text-start"><%= simple_format (@article.description) %></div>
-                <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info" %>
-                <%= link_to('Delete', article_path(@article), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}) %>
+                <%if logged_in? && (@article.user == current_user || current_user.admin?) %>
+                    <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info" %>
+                    <%= link_to('Delete', article_path(@article), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}) %>
+                <% end %>
             </div>
             <div class="card-footer text-body-secondary">
                 <small>Created <%=time_ago_in_words (@article.created_at) %> ago | Edited <%= time_ago_in_words (@article.updated_at) %> ago </small>
