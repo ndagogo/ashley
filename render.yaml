@@ -1,0 +1,19 @@
+- name: myalpha
+    ipAllowList: []
+    plan: free
+    user: myalpha
+
+services:
+  - type: web
+    plan: free
+    name: myalpha
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: bundle exec rails s
+    envVars:
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: friendsapp
+          property: connectionString
