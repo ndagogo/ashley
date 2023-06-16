@@ -27,3 +27,10 @@ Things you may want to cover:
 <h4 class="text-left mt-4">Joined Alpha Blog On: <%= @user.created_at.to_formatted_s(:long) %></h4>
     <h4 class="text-left mt-4">Updated Profile On: <%= @user.updated_at.to_formatted_s(:long) %></h4>
 
+
+class HomeControllerTest < ActionDispatch::IntegrationTest
+  test "should get index" do
+    get home_index_url
+    assert_response :success
+  end
+end
